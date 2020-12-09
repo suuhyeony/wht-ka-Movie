@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { useDispatch } from "react-redux";
+import { getMovie } from "../modules/movie";
+import { Link } from "react-router-dom";
 
 const Posters = styled.div`
     width: 100%;
@@ -24,6 +27,13 @@ const Img = styled.img`
 `;
 
 function HotMovie({ movies }) {
+    const dispatch = useDispatch()
+
+    const getMovieDetail = (movie) => {
+        dispatch(getMovie(movie))
+    }
+
+
     const settings = {
         dots: false,
         infinite: true,
@@ -39,7 +49,7 @@ function HotMovie({ movies }) {
             </div>
             <Posters>
                 <Slider {...settings}>
-                    {movies.map(movie => (<div><Img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='movie-poster' /></div>))}
+                    {movies.map(movie => (<Link to='/about' onClick={getMovieDetail.bind(this, movie)}><Img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='movie-poster' /></Link>))}
                 </Slider>
             </Posters>
         </>
