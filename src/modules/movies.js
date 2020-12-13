@@ -8,11 +8,18 @@ const GET_MOVIES_ERROR = 'GET_MOVIES_ERROR';
 // const CLEAR_POST = 'CLEAR_POST';
 
 const API_KEY = '409d8d6f8128764e980980164deb92d2'
+
 // action creators
 export const getMovies = () => async dispatch => {
     dispatch({ type: GET_MOVIES });
     try {
-        const movies = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=ko-KR`)
+        let movies = []
+        for(let PAGE = 1; PAGE < 3; PAGE++) {
+            const singlePageMovies = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=ko-KR&page=${PAGE}`)
+            // console.log(singlePageMovies.data.results)
+            movies = movies.concat(singlePageMovies.data.results)
+        }
+        console.log(movies)
         dispatch({ type: GET_MOVIES_SUCCESS, movies });
         // console.log(movies)
     } catch (e) {

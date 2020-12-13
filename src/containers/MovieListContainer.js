@@ -16,7 +16,7 @@ function MovieListContainer() {
     if (!data) return <div>데이터 불러오는중</div>
     // console.log(data)
     // return <div></div>
-    return <HotMovie movies={data.data.results} />
+    return <HotMovie movies={data} />
 }
 
 export default MovieListContainer;

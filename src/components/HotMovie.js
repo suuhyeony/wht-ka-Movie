@@ -7,6 +7,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { useDispatch } from "react-redux";
 import { getMovie } from "../modules/movie";
 import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 const Posters = styled.div`
     width: 100%;
@@ -37,19 +38,20 @@ function HotMovie({ movies }) {
     const settings = {
         dots: false,
         infinite: true,
-        speed: 500,
+        speed: 200,
         slidesToShow: 5,
-        slidesToScroll: 1
+        slidesToScroll: 5
     };
     return (
         <>
             <div>
-                <h1>인기 영화</h1>
+                <SearchBar />
+                <h2>인기 영화</h2>
                 <a>더보기</a>
             </div>
             <Posters>
                 <Slider {...settings}>
-                    {movies.map(movie => (<Link to='/about' onClick={getMovieDetail.bind(this, movie)}><Img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='movie-poster' /></Link>))}
+                    {movies.map(movie => (<Link to='/about' key={movie.id} onClick={getMovieDetail.bind(this, movie)}><Img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='movie-poster' /></Link>))}
                 </Slider>
             </Posters>
         </>
