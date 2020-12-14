@@ -7,7 +7,7 @@ function MovieDetail() {
     if (loading) return <div>로딩중...</div>
     if (error) return <div>에러 발생!</div>
     if (!data) return <div>데이터 불러오는중</div>
-    console.log(data)
+    // console.log(data)
     const { title, overview, poster_path } = data
 
     return (

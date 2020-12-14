@@ -28,7 +28,7 @@ const Img = styled.img`
 `;
 
 function HotMovie({ movies }) {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const getMovieDetail = (movie) => {
         dispatch(getMovie(movie))

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
-import { FaBars } from 'react-icons/fa';
+import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+import { FaBars, FaSearch } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { SearchMovies } from '../modules/searchMovie';
 
 const Bar = styled.div`
     display: flex;
@@ -24,16 +27,33 @@ const Input = styled.input`
 
 function SearchBar() {
     const [value, setValue] = useState('');
-    const onChange = e => setValue(e.target.value);
-    // const onSubmit = e => {
-    //     e.preventDefault();
-    //     dispatch();
-    //     setValue('');
-    // }
+    const dispatch = useDispatch();
+    const history = useHistory();
+    
+    const onChange = (e) => {
+        setValue(e.target.value)
+    };
+
+    const handleSearch = (e) => { 
+        if (e.key === 'Enter') {
+            dispatch(SearchMovies(value))
+            history.push('/movie-list')
+        }
+    }
+
+    // useEffect(() => {
+    //     dispatch(SearchMovies());
+    // }, [dispatch]);
+
+    // if (loading) return <div>로딩중...</div>
+    // if (error) return <div>에러 발생!</div>
+    // if (!data) return <div>데이터 불러오는중</div>
+    
     return (
         <Bar>
             <h1>왓카무비</h1>
-            <Input placeholder='보고싶은 영화를 검색하세요.' onChange={onChange} value={value} />
+            <Input placeholder='보고싶은 영화를 검색하세요.' onChange={onChange} value={value} onKeyPress={handleSearch} />
+            <button onClick={handleSearch}><FaSearch /></button>
             <button><FaBars /></button>
         </Bar>
     );
