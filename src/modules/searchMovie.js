@@ -8,7 +8,7 @@ const SEARCH_MOVIES_ERROR = 'SEARCH_MOVIES_ERROR';
 
 // const CLEAR_POST = 'CLEAR_POST';
 
-const API_KEY = '409d8d6f8128764e980980164deb92d2'
+const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
 // action creators
 export const SearchMovies = (value) => async dispatch => {

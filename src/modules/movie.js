@@ -6,7 +6,6 @@ const GET_MOVIE_ERROR = 'GET_MOVIE_ERROR';
 
 // const CLEAR_POST = 'CLEAR_POST';
 
-// const API_KEY = '409d8d6f8128764e980980164deb92d2'
 // action creators
 export const getMovie = (movie) => async dispatch => {
     dispatch({ type: GET_MOVIE })
