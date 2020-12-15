@@ -114,4 +114,8 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
+<<<<<<< HEAD
 # End of https://www.toptal.com/developers/gitignore/api/node,dotenv
+=======
+# End of https://www.toptal.com/developers/gitignore/api/node,dotenv
+>>>>>>> 766c0affafb1367d87a6933bda9fc011b86519ef
