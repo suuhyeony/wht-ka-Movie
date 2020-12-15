@@ -45,7 +45,6 @@ function HotMovie({ movies }) {
     return (
         <>
             <div>
-                <SearchBar />
                 <h2>인기 영화</h2>
                 <a>더보기</a>
             </div>

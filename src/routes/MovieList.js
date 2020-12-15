@@ -9,6 +9,13 @@ const Img = styled.img`
     width: 150px;
 `;
 
+const List = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+`;
+
 function MovieList() {
     const { data, loading, error } = useSelector(state => state.searchMovie.response_list);
     const dispatch = useDispatch();
@@ -25,13 +32,13 @@ function MovieList() {
     // const { title, poster_path } = data
 
     return (
-        <div>
+        <List>
             {data.map(response => (
                 <Link to='/about' key={response.id} onClick={getMovieDetail.bind(this, response)}>
-                    <span>{response.title}</span>
+                    <div>{response.title}</div>
                     <Img src={`https://image.tmdb.org/t/p/w500/${response.poster_path}`} alt='movie-poster' />
                 </Link>))}
-        </div>
+        </List>
     );
 }
 

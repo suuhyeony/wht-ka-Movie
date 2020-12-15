@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaBars, FaSearch } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
@@ -23,6 +23,14 @@ const Input = styled.input`
     box-sizing: border-box;
 `;
 
+const Search = styled.div`
+    font-size: 24px;
+    cursor: pointer;
+    color: #999797;
+    &:hover {
+        color: #2c2a2a;
+    }
+`;
 
 
 function SearchBar() {
@@ -35,26 +43,19 @@ function SearchBar() {
     };
 
     const handleSearch = (e) => { 
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter' || e.type === 'click') {
             dispatch(SearchMovies(value))
             history.push('/movie-list')
+            setValue('')
         }
     }
-
-    // useEffect(() => {
-    //     dispatch(SearchMovies());
-    // }, [dispatch]);
-
-    // if (loading) return <div>로딩중...</div>
-    // if (error) return <div>에러 발생!</div>
-    // if (!data) return <div>데이터 불러오는중</div>
     
     return (
         <Bar>
-            <h1>왓카무비</h1>
+            <Link to='/'><h1>왓카무비</h1></Link>
             <Input placeholder='보고싶은 영화를 검색하세요.' onChange={onChange} value={value} onKeyPress={handleSearch} />
-            <button onClick={handleSearch}><FaSearch /></button>
-            <button><FaBars /></button>
+            <Search onClick={handleSearch}><FaSearch /></Search>
+            <Search><FaBars /></Search>
         </Bar>
     );
 }
