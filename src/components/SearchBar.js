@@ -17,19 +17,24 @@ const Input = styled.input`
     padding: 10px;
     border-radius: 4px;
     border: 1px solid #dee2e6;
-    width: 50%;
+    width: 400px;
     outline: none;
     font-size: 12px;
     box-sizing: border-box;
 `;
 
 const Search = styled.div`
+    margin-left: 10px;
     font-size: 24px;
     cursor: pointer;
     color: #999797;
     &:hover {
         color: #2c2a2a;
     }
+`;
+
+const InputContainer = styled.div`
+    display: flex;
 `;
 
 
@@ -53,8 +58,10 @@ function SearchBar() {
     return (
         <Bar>
             <Link to='/'><h1>왓카무비</h1></Link>
-            <Input placeholder='보고싶은 영화를 검색하세요.' onChange={onChange} value={value} onKeyPress={handleSearch} />
-            <Search onClick={handleSearch}><FaSearch /></Search>
+            <InputContainer>
+                <Input placeholder='보고싶은 영화를 검색하세요.' onChange={onChange} value={value} onKeyPress={handleSearch} />
+                <Search onClick={handleSearch}><FaSearch /></Search>
+            </InputContainer>
             <Search><FaBars /></Search>
         </Bar>
     );

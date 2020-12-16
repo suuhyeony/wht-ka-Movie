@@ -1,5 +1,4 @@
 import React from "react";
-// import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -7,7 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { useDispatch } from "react-redux";
 import { getMovie } from "../modules/movie";
 import { Link } from "react-router-dom";
-import SearchBar from "./SearchBar";
+
 
 const Posters = styled.div`
     width: 100%;
@@ -25,6 +24,20 @@ const Posters = styled.div`
 
 const Img = styled.img`
     width: 100%;
+    height: 330px;
+    transition: transform 100ms ease-in;
+    &:hover {
+        transform: scale(1.07);
+    }
+`;
+
+const List = styled.div`
+    margin-top: 40px;
+`;
+
+const Letters = styled.div`
+    display: flex;
+    align-items: flex-end;
 `;
 
 function HotMovie({ movies }) {
@@ -34,7 +47,6 @@ function HotMovie({ movies }) {
         dispatch(getMovie(movie))
     }
 
-
     const settings = {
         dots: false,
         infinite: true,
@@ -43,17 +55,17 @@ function HotMovie({ movies }) {
         slidesToScroll: 5
     };
     return (
-        <>
-            <div>
-                <h2>인기 영화</h2>
-                <a>더보기</a>
-            </div>
+        <List>
+            <Letters>
+                <h3>인기 영화</h3>
+                <p>더보기</p>
+            </Letters>
             <Posters>
                 <Slider {...settings}>
                     {movies.map(movie => (<Link to='/about' key={movie.id} onClick={getMovieDetail.bind(this, movie)}><Img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='movie-poster' /></Link>))}
                 </Slider>
             </Posters>
-        </>
+        </List>
     );
 }
 

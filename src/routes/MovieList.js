@@ -7,13 +7,22 @@ import styled from 'styled-components';
 
 const Img = styled.img`
     width: 150px;
+    margin-bottom: 10px;
+    transition: transform 100ms ease-in;
+    &:hover {
+        transform: scale(1.07);
+    }
 `;
 
 const List = styled.div`
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 40px;
+    row-gap: 40px;
+    /* justify-content: space-around; */
+    /* align-items: center;
+    padding: 5px; */
 `;
 
 function MovieList() {
@@ -35,8 +44,8 @@ function MovieList() {
         <List>
             {data.map(response => (
                 <Link to='/about' key={response.id} onClick={getMovieDetail.bind(this, response)}>
-                    <div>{response.title}</div>
                     <Img src={`https://image.tmdb.org/t/p/w500/${response.poster_path}`} alt='movie-poster' />
+                    <div>{response.title}</div>
                 </Link>))}
         </List>
     );

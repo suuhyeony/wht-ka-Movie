@@ -1,5 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
+
+const Img = styled.img`
+    width: 300px;
+    margin-bottom: 10px;
+`;
+
+const Info = styled.div`
+    margin-top: 40px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
 
 function MovieDetail() {
     const { data, loading, error } = useSelector(state => state.movie.movie);
@@ -11,11 +26,18 @@ function MovieDetail() {
     const { title, overview, poster_path } = data
 
     return (
-        <div>
-            <h1>{title}</h1>
-            <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} />
-            <p>{overview}</p>
-        </div>
+        <>
+            <Info>
+                <Img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} />
+                <div>
+                    <h2>{title}</h2>
+                    <p>{overview}</p>
+                </div>
+            </Info>
+            <div>
+                <h2>Youtube</h2>
+            </div>
+        </>
     );
 }
 
