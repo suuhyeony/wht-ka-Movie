@@ -15,7 +15,7 @@ export const getVideos = (id) => async dispatch => {
     dispatch({ type: GET_VIDEOS });
     try {
         const videos = await axios.get(`https://api.themoviedb.org/3/movie/${MOVIE_ID}/videos?api_key=${API_KEY}&language=en-US`)
-        console.log(videos)
+        // console.log(videos)
         dispatch({ type: GET_VIDEOS_SUCCESS, videos });
     } catch (e) {
         dispatch({ type: GET_VIDEOS_ERROR, error: e });

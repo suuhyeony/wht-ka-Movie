@@ -10,7 +10,7 @@ const Img = styled.img`
 `;
 
 const Info = styled.div`
-    margin-top: 40px;
+    margin: 40px;
     padding: 20px;
     /* width: 50%;
     display: flex;
@@ -37,7 +37,9 @@ function MovieDetail() {
     return (
         <>
             <Info>
-                <Img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} />
+                <div style={{ marginLeft:'20px' }}>
+                    <Img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} />
+                </div>
                 <div>
                     <h2>{title}</h2>
                     <p>{overview}</p>
