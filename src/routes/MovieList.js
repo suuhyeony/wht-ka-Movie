@@ -33,12 +33,12 @@ function MovieList() {
         dispatch(getMovie(movie))
     }
 
-    if (loading) return <div>로딩중...</div>
+    if (loading) return <div style={{ display: 'flex', justifyContent: 'center' }}>로딩중...</div>
     if (error) return <div>에러 발생!</div>
     if (!data) return <div>데이터 불러오는중</div>
-    console.log(data)
+    if (data.length === 0) return <div style={{ display: 'flex', justifyContent: 'center' }}>검색 결과가 없습니다.</div>
+    // console.log(data)
     
-    // const { title, poster_path } = data
 
     return (
         <List>

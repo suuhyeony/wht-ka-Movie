@@ -14,7 +14,8 @@ const Bar = styled.div`
 
 const Input = styled.input`
     display: flex;
-    padding: 10px;
+    flex: 1;
+    padding: 8px;
     border-radius: 4px;
     border: 1px solid #dee2e6;
     width: 400px;
@@ -35,6 +36,7 @@ const Search = styled.div`
 
 const InputContainer = styled.div`
     display: flex;
+
 `;
 
 

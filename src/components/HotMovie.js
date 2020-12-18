@@ -58,7 +58,7 @@ function HotMovie({ movies }) {
         <List>
             <Letters>
                 <h3>인기 영화</h3>
-                <p>더보기</p>
+                <p style={{ marginLeft: '10px' }}>더보기</p>
             </Letters>
             <Posters>
                 <Slider {...settings}>
