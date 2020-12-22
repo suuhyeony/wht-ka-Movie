@@ -7,7 +7,7 @@ const GET_MOVIES_ERROR = 'GET_MOVIES_ERROR';
 
 // const CLEAR_POST = 'CLEAR_POST';
 
-const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
+const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
 // action creators
 export const getMovies = () => async dispatch => {
