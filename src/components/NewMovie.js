@@ -13,12 +13,12 @@ const Posters = styled.div`
     margin: 0 40;
     .slick-prev:before {
         opacity: 1;
-        color: black;
+        color: #ffffff;
         left: 0;
     }
     .slick-next:before {
         opacity: 1;
-        color: black;
+        color: #ffffff;
     }
 `;
 
@@ -38,6 +38,7 @@ const List = styled.div`
 const Letters = styled.div`
     display: flex;
     align-items: flex-end;
+    color: white;
 `;
 
 function NewMovie({ newMovies }) {
@@ -58,7 +59,7 @@ function NewMovie({ newMovies }) {
         <List>
             <Letters>
                 <h3>개봉 예정작</h3>
-                <p style={{ marginLeft: '10px' }}>더보기</p>
+                <Link to='/more-new' style={{ marginLeft: '10px', color: 'white' }}>더보기</Link>
             </Letters>
             <Posters>
                 <Slider {...settings}>

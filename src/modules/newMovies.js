@@ -18,7 +18,10 @@ export const getNewMovies = () => async dispatch => {
         let year = today.getFullYear();
         let month = today.getMonth() + 1;
         let date = today.getDate();
+        if (month < 10) {month = '0' + month};
+        if (date < 10) {date = '0' + date};
         today = year + '-' + month + '-' + date;
+        // console.log(today);
 
         for(let PAGE = 1; PAGE < 5; PAGE++) {
             const singlePageMovies = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=ko-KR&page=${PAGE}`)
@@ -26,7 +29,7 @@ export const getNewMovies = () => async dispatch => {
             newMovies = newMovies.concat(singlePageMovies.data.results);
         };
         newMovies = newMovies.filter((movie) => movie.release_date > today);
-        console.log(newMovies);
+        // console.log(newMovies);
         dispatch({ type: GET_NEWMOVIES_SUCCESS, newMovies });
         // console.log(movies)
     } catch (e) {

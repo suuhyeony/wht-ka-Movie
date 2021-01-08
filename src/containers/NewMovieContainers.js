@@ -11,9 +11,9 @@ function NewMovieContainer() {
         dispatch(getNewMovies());
     }, [dispatch]);
 
-    if (loading) return <div style={{ display: 'flex', justifyContent: 'center' }}>로딩중...</div>
-    if (error) return <div>에러 발생!</div>
-    if (!data) return <div>데이터 불러오는중</div>
+    if (loading) return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', padding: '50px' }}>로딩중...</div>
+    if (error) return <div style={{ color: 'white' }}>에러 발생!</div>
+    if (!data) return <div style={{ color: 'white' }}>데이터 불러오는중</div>
     // console.log(data)
     // return <div></div>
     return <NewMovie newMovies={data} />

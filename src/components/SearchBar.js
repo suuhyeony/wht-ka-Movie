@@ -5,19 +5,31 @@ import { FaBars, FaSearch } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { SearchMovies } from '../modules/searchMovie';
 
+
 const Bar = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 5px;
-`;
+    padding: 10px;
+    color: white;
+    `;
+
+    const Logo = styled.h1`
+        text-decoration: none;
+        color: white;
+        &:hover {
+            text-decoration: none;
+        }
+    `;
 
 const Input = styled.input`
     display: flex;
     flex: 1;
     padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    border: none;
+    background-color: #eeeeee;
+    color: black;
     width: 400px;
     outline: none;
     font-size: 12px;
@@ -25,12 +37,12 @@ const Input = styled.input`
 `;
 
 const Search = styled.div`
-    margin-left: 10px;
+    margin-left: 15px;
     font-size: 24px;
     cursor: pointer;
-    color: #999797;
+    color: #b3b2b2;
     &:hover {
-        color: #2c2a2a;
+        color: #ffffff;
     }
 `;
 
@@ -59,7 +71,7 @@ function SearchBar() {
     
     return (
         <Bar>
-            <Link to='/'><h1>왓카무비</h1></Link>
+            <Link to='/'><Logo>왓카무비</Logo></Link>
             <InputContainer>
                 <Input placeholder='보고싶은 영화를 검색하세요.' onChange={onChange} value={value} onKeyPress={handleSearch} />
                 <Search onClick={handleSearch}><FaSearch /></Search>

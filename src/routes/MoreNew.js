@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import { response_list } from '../modules/searchMovie';
+import { getNewMovies } from '../modules/newMovies';
 import { getMovie } from '../modules/movie';
 import styled from 'styled-components';
 
@@ -20,14 +20,15 @@ const List = styled.div`
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     margin-top: 40px;
     row-gap: 40px;
-    /* justify-content: space-around; */
-    /* align-items: center;
-    padding: 5px; */
 `;
 
-function MovieList() {
-    const { data, loading, error } = useSelector(state => state.searchMovie.response_list);
+function MoreNew() {
+    const { data, loading, error } = useSelector(state => state.newMovies.newMovies);
     const dispatch = useDispatch();
+    
+    useEffect(() => {
+        dispatch(getNewMovies());
+    }, [dispatch]);
 
     const getMovieDetail = (movie) => {
         dispatch(getMovie(movie))
@@ -51,4 +52,4 @@ function MovieList() {
     );
 }
 
-export default MovieList;
+export default MoreNew;
