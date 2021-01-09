@@ -1,7 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import Genre from './Genre';
 import Youtube from './Youtube';
+import { FaStar } from 'react-icons/fa';
 
 const Img = styled.img`
     width: 300px;
@@ -13,6 +15,11 @@ const Info = styled.div`
     margin: 40px;
     padding: 10px;
     color: white;
+`;
+
+const TitleContainer = styled.div`
+    display: flex;
+    justify-content: flex-start;
 `;
 
 const Detail = styled.div`
@@ -40,10 +47,13 @@ function MovieDetail() {
     return (
         <>
             <Info>
-                <h2>{title}</h2>
+                <TitleContainer>
+                    <h2>{title}</h2>
+                    <p style={{ marginTop: '35px', marginLeft: '10px' }}>{release_date}</p>
+                </TitleContainer>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <p>{release_date}</p>
-                    <p>{vote_average} / 10</p>
+                    <Genre id={id} />
+                    <p><FaStar color='white' />{vote_average} / 10</p>
                 </div>
                 <Detail>
                     <Img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} />

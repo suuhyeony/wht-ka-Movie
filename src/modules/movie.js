@@ -11,7 +11,7 @@ export const getMovie = (movie) => async dispatch => {
     dispatch({ type: GET_MOVIE })
     try {
         dispatch({ type: GET_MOVIE_SUCCESS, movie });
-        console.log(movie)
+        // console.log(movie);
 
     } catch (e) {
         dispatch({ type: GET_MOVIE_ERROR, error: e });
