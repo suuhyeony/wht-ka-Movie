@@ -4,8 +4,8 @@ import movie from './movie';
 import searchMovie from './searchMovie';
 import newMovies from './newMovies';
 import youtube from './youtube';
-import genre from './genre';
+import genreTag from './genreTag';
 
-const rootReducer = combineReducers({ movies, movie, searchMovie, newMovies, youtube, genre });
+const rootReducer = combineReducers({ movies, movie, searchMovie, newMovies, youtube, genreTag });
 
 export default rootReducer;

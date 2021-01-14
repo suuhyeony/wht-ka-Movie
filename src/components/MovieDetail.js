@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import Genre from './Genre';
+import GenreTags from './GenreTags';
 import Youtube from './Youtube';
 import { FaStar } from 'react-icons/fa';
 
@@ -52,7 +52,7 @@ function MovieDetail() {
                     <p style={{ marginTop: '35px', marginLeft: '10px' }}>{release_date}</p>
                 </TitleContainer>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Genre id={id} />
+                    <GenreTags id={id} />
                     <p><FaStar color='white' />{vote_average} / 10</p>
                 </div>
                 <Detail>

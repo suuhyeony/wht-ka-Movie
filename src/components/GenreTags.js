@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGenre } from '../modules/genre';
+import { getGenre } from '../modules/genreTag';
 import styled from 'styled-components';
 
 const TagContainer = styled.div`
@@ -20,8 +20,8 @@ const Tag = styled.div`
 `;
 
 
-function Genre({ id }) {
-    const { data } = useSelector(state => state.genre.genre);
+function GenreTags({ id }) {
+    const { data } = useSelector(state => state.genreTag.genre);
     const dispatch = useDispatch();
     
     useEffect(() => {
@@ -43,4 +43,4 @@ function Genre({ id }) {
     );
 }
 
-export default Genre;
+export default GenreTags;
