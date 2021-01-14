@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -50,6 +50,7 @@ const Select = styled.select`
     margin: 5px 20px;
 
 `;
+
 
 const genreList = [
     {
@@ -103,39 +104,46 @@ const genreList = [
     },{
         "id":10752,
         "name":"전쟁"
-    },{
-        "id":37,
-        "name":"서부"
     }
 ]
 
 
 function GenreMovie({ movies }) {
+    const [value, setValue] = useState('');
     const dispatch = useDispatch();
 
     const getMovieDetail = (movie) => {
         dispatch(getMovie(movie))
     }
-
+    
+    const genreChange = async (e) => {
+        // console.log(typeof(e.target.value))
+        await setValue(parseInt(e.target.value));
+        // console.log(value);
+    };
+    
     const settings = {
         dots: false,
-        infinite: true,
+        infinite: false,
         speed: 200,
         slidesToShow: 5,
         slidesToScroll: 5
     };
+
+
     return (
         <List>
             <Letters>
                 <h3>장르별 영화</h3>
-                <Select name="genreDropdown" id="dropDown">
-                    {genreList.map(genre => (<option value={genre.name}>{genre.name}</option>))}
+                <Select name="genreDropdown" id="dropDown" value={value} onChange={genreChange}>
+                    {genreList.map(genre => (<option key={genre.id} value={genre.id}>{genre.name}</option>))}
                 </Select>
                 <Link to='/more' style={{ margin: '0 10px', color: 'white' }}>더보기</Link>
             </Letters>
             <Posters>
                 <Slider {...settings}>
-                    {movies.map(movie => (<Link to='/about' key={movie.id} onClick={getMovieDetail.bind(this, movie)}><Img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='movie-poster' /></Link>))}
+                    {movies.filter(movie => movie.genre_ids.includes(value))
+                    .map(movie => (<Link to='/about' key={movie.id} onClick={getMovieDetail.bind(this, movie)}><Img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='movie-poster' /></Link>))}
                 </Slider>
             </Posters>
         </List>

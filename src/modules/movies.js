@@ -14,12 +14,12 @@ export const getMovies = () => async dispatch => {
     dispatch({ type: GET_MOVIES });
     try {
         let movies = []
-        for(let PAGE = 1; PAGE < 3; PAGE++) {
+        for(let PAGE = 1; PAGE < 15; PAGE++) {
             const singlePageMovies = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=ko-KR&page=${PAGE}`)
             // console.log(singlePageMovies.data.results)
             movies = movies.concat(singlePageMovies.data.results)
         }
-        // console.log(movies)
+        console.log(movies)
         dispatch({ type: GET_MOVIES_SUCCESS, movies });
         // console.log(movies)
     } catch (e) {
