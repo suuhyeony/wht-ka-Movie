@@ -19,7 +19,7 @@ export const getMovies = () => async dispatch => {
             // console.log(singlePageMovies.data.results)
             movies = movies.concat(singlePageMovies.data.results)
         }
-        console.log(movies)
+        // console.log(movies)
         dispatch({ type: GET_MOVIES_SUCCESS, movies });
         // console.log(movies)
     } catch (e) {

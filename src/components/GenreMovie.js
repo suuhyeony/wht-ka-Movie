@@ -109,7 +109,7 @@ const genreList = [
 
 
 function GenreMovie({ movies }) {
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(parseInt(28));
     const dispatch = useDispatch();
 
     const getMovieDetail = (movie) => {
@@ -121,7 +121,7 @@ function GenreMovie({ movies }) {
         await setValue(parseInt(e.target.value));
         // console.log(value);
     };
-    
+
     const settings = {
         dots: false,
         infinite: false,
@@ -138,7 +138,7 @@ function GenreMovie({ movies }) {
                 <Select name="genreDropdown" id="dropDown" value={value} onChange={genreChange}>
                     {genreList.map(genre => (<option key={genre.id} value={genre.id}>{genre.name}</option>))}
                 </Select>
-                <Link to='/more' style={{ margin: '0 10px', color: 'white' }}>더보기</Link>
+                <Link to='/more-genre' style={{ margin: '0 10px', color: 'white' }}>더보기</Link>
             </Letters>
             <Posters>
                 <Slider {...settings}>
