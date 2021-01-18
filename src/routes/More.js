@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getMovies } from '../modules/movies';
+// import { getMovies } from '../modules/movies';
 import { getMovie } from '../modules/movie';
 import styled from 'styled-components';
 
@@ -26,9 +26,9 @@ function More() {
     const { data, loading, error } = useSelector(state => state.movies.movies);
     const dispatch = useDispatch();
     
-    useEffect(() => {
-        dispatch(getMovies());
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(getMovies());
+    // }, [dispatch]);
 
     const getMovieDetail = (movie) => {
         dispatch(getMovie(movie))

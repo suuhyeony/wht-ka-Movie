@@ -28,6 +28,20 @@ export const getMovies = () => async dispatch => {
 };
 
 
+export const getGenreMovies = ({ movies, value }) => async dispatch => {
+    dispatch({ type: GET_MOVIES });
+    try {
+        // console.log(movies)
+        movies = movies.filter(movie => movie.genre_ids.includes(value));
+        dispatch({ type: GET_MOVIES_SUCCESS, movies });
+        // console.log(movies)
+    } catch (e) {
+        console.log('error');
+        dispatch({ type: GET_MOVIES_ERROR, error: e });
+    }
+};
+
+
 // initial state
 const initialState = {
     movies: {

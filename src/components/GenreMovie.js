@@ -5,12 +5,14 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useDispatch } from "react-redux";
 import { getMovie } from "../modules/movie";
-import { Link } from "react-router-dom";
+import { getGenreMovies } from "../modules/movies";
+import { Link, useHistory } from "react-router-dom";
 
 
 const Posters = styled.div`
     width: 100%;
-    margin: 0 40;
+    margin-bottom: 40px;
+    padding: 20px;
     .slick-prev:before {
         opacity: 1;
         color: #ffffff;
@@ -48,7 +50,7 @@ const Select = styled.select`
     padding: 0.8rem 0.5rem;
     border-radius: 0px;
     margin: 5px 20px;
-
+    cursor: pointer;
 `;
 
 
@@ -110,7 +112,9 @@ const genreList = [
 
 function GenreMovie({ movies }) {
     const [value, setValue] = useState(parseInt(28));
+    const history = useHistory();
     const dispatch = useDispatch();
+    // console.log(history)
 
     const getMovieDetail = (movie) => {
         dispatch(getMovie(movie))
@@ -121,6 +125,13 @@ function GenreMovie({ movies }) {
         await setValue(parseInt(e.target.value));
         // console.log(value);
     };
+
+    const updateGenreMovie = async () => {
+        // console.log('done')
+        await dispatch(getGenreMovies({ movies, value }));
+        // console.log(movies, value)
+        history.push('/more');
+    }
 
     const settings = {
         dots: false,
@@ -138,7 +149,7 @@ function GenreMovie({ movies }) {
                 <Select name="genreDropdown" id="dropDown" value={value} onChange={genreChange}>
                     {genreList.map(genre => (<option key={genre.id} value={genre.id}>{genre.name}</option>))}
                 </Select>
-                <Link to='/more-genre' style={{ margin: '0 10px', color: 'white' }}>더보기</Link>
+                <button onClick={updateGenreMovie} style={{ color: 'white', border: 'none', backgroundColor: 'black' }}>더보기</button>
             </Letters>
             <Posters>
                 <Slider {...settings}>

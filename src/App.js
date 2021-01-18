@@ -7,7 +7,7 @@ import Home from './routes/Home';
 import SearchBar from './components/SearchBar';
 import { createGlobalStyle } from 'styled-components';
 import MoreNew from './routes/MoreNew';
-import MoreGenre from './routes/MoreGenre';
+
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -29,7 +29,6 @@ function App() {
             <Route path='/movie-list' component={MovieList} />
             <Route path='/more' component={More} />
             <Route path='/more-new' component={MoreNew} />
-            <Route path='/more-genre' component={MoreGenre} />
           </div>
       </div>
     </>

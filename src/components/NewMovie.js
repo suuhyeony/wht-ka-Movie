@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const Posters = styled.div`
     width: 100%;
-    margin: 0 40;
+    padding: 20px;
     .slick-prev:before {
         opacity: 1;
         color: #ffffff;

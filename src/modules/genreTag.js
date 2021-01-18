@@ -15,7 +15,7 @@ export const getGenre = (id) => async dispatch => {
     dispatch({ type: GET_GENRE });
     try {
         const genre = await axios.get(`https://api.themoviedb.org/3/movie/${MOVIE_ID}?api_key=${API_KEY}&language=ko-KR`);
-        console.log(genre);
+        // console.log(genre);
         dispatch({ type: GET_GENRE_SUCCESS, genre });
     } catch (e) {
         dispatch({ type: GET_GENRE_ERROR, error: e });

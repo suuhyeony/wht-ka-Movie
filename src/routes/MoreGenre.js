@@ -5,6 +5,7 @@ import { getMovies } from '../modules/movies';
 import { getMovie } from '../modules/movie';
 import styled from 'styled-components';
 
+
 const Img = styled.img`
     width: 150px;
     margin-bottom: 10px;
@@ -25,7 +26,6 @@ const List = styled.div`
 function MoreGenre() {
     const { data, loading, error } = useSelector(state => state.movies.movies);
     const dispatch = useDispatch();
-    
     useEffect(() => {
         dispatch(getMovies());
     }, [dispatch]);
