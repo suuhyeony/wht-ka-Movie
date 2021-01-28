@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { FaBars, FaSearch } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { SearchMovies } from '../modules/searchMovie';
+import logo2 from '../img/logo2.jpg';
 
 
 const Bar = styled.div`
@@ -14,13 +15,13 @@ const Bar = styled.div`
     color: white;
     `;
 
-    const Logo = styled.h1`
+const Logo = styled.img`
+    width: 200px;
+    text-decoration: none;
+    &:hover {
         text-decoration: none;
-        color: white;
-        &:hover {
-            text-decoration: none;
-        }
-    `;
+    }
+`;
 
 const Input = styled.input`
     display: flex;
@@ -71,7 +72,7 @@ function SearchBar() {
     
     return (
         <Bar>
-            <Link to='/'><Logo>왓카무비</Logo></Link>
+            <Link to='/'><Logo src={logo2}></Logo></Link>
             <InputContainer>
                 <Input placeholder='보고싶은 영화를 검색하세요.' onChange={onChange} value={value} onKeyPress={handleSearch} />
                 <Search onClick={handleSearch}><FaSearch /></Search>
