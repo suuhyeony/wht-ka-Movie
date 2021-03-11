@@ -36,9 +36,13 @@
 
 - 홈
 ![home](https://user-images.githubusercontent.com/58247800/110799961-105fa480-82bf-11eb-8439-865f767a0f5a.JPG)
+
 <br>
+
 - 상세 페이지
 ![detail](https://user-images.githubusercontent.com/58247800/110799981-15bcef00-82bf-11eb-92b1-831ebdbf7730.JPG)
+
 <br>
+
 - 검색 결과
 ![search](https://user-images.githubusercontent.com/58247800/110799995-19e90c80-82bf-11eb-8430-69164b3eeada.JPG)
